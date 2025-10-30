@@ -11,9 +11,13 @@
     tools:context=".HistoryActivity">
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="history"
+        android:text="History"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
         android:layout_gravity="center"/>
 
     <ListView

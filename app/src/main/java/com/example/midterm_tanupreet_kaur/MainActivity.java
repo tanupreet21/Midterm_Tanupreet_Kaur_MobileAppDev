@@ -1,6 +1,8 @@
 package com.example.midterm_tanupreet_kaur;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -95,5 +97,36 @@ public class MainActivity extends AppCompatActivity {
             tableList.add(num + " * " + i + " = " + (num * i));
         }
         adapter.notifyDataSetChanged();
+    }
+
+    // Inflate the menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    // Handle menu actions
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.clear_all) {
+            if (tableList.isEmpty()) {
+                Toast.makeText(this, "No items to clear", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+
+            new AlertDialog.Builder(this)
+                    .setTitle("Clear All")
+                    .setMessage("Are you sure to delete all items?")
+                    .setPositiveButton("Yes", (dialog, which) -> {
+                        tableList.clear();
+                        adapter.notifyDataSetChanged();
+                        Toast.makeText(this, "All rows got cleared!", Toast.LENGTH_SHORT).show();
+                    })
+                    .setNegativeButton("No", null)
+                    .show();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
