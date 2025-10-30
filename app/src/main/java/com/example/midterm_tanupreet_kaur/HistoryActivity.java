@@ -27,10 +27,21 @@ public class HistoryActivity extends AppCompatActivity {
             return insets;
         });
 
+
+        //Enable ActionBar back button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         historyList = findViewById(R.id.listHistory);
 
         ArrayList<Integer> history = MainActivity.historyList;
         ArrayAdapter<Integer> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, history);
         historyList.setAdapter(adapter);
+    }
+
+    //Handle Actionbar back button click
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish(); // Close detail activity and go back
+        return true;
     }
 }
