@@ -41,7 +41,7 @@ public class HistoryActivity extends AppCompatActivity {
     //Handle Actionbar back button click
     @Override
     public boolean onSupportNavigateUp() {
-        finish(); // Close detail activity and go back
+        finish(); // Close history activity and go back
         return true;
     }
 }
